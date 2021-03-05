@@ -16,6 +16,9 @@ public class ComandoControladorPersona {
 
 	@Autowired
 	private ManejadorCreacionPersona manejadorCreacionPersona;
+	
+	//TODO: crear manejador para actualizar
+	//TODO: crear manejador para eliminar
 
 	@PostMapping
 	public ComandoRespuesta<Integer> crear(@RequestBody PersonaDTO persona) {
