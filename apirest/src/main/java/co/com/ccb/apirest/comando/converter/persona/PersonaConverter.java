@@ -22,5 +22,10 @@ public class PersonaConverter {
 		persona.setApellido(personaDTO.getApellido());
 		return persona;
 	}
+	
+	
+	//TODO: método actualizar
+	
+	//TODO: método para eliminar
 
 }

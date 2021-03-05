@@ -21,5 +21,8 @@ public class ComandoControladorPersona {
 	public ComandoRespuesta<Integer> crear(@RequestBody PersonaDTO persona) {
 		return manejadorCreacionPersona.ejecutar(persona);
 	}
+	
+	//TODO: actualizar
+	//TODO: Eliminar
 
 }
