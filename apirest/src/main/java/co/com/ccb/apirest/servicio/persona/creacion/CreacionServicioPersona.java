@@ -4,6 +4,11 @@ import co.com.ccb.apirest.model.Persona;
 
 public interface CreacionServicioPersona {
 
-	void ejecutar(Persona persona);
+	/**
+	 * Inserta una persona
+	 * @param persona
+	 * @return idPersona
+	 */
+	Integer ejecutar(Persona persona);
 
 }

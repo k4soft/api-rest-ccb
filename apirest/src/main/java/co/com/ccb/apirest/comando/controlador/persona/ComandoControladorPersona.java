@@ -6,19 +6,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.com.ccb.apirest.model.Persona;
-import co.com.ccb.apirest.servicio.persona.creacion.CreacionServicioPersona;
+import co.com.ccb.apirest.aplicacion.ComandoRespuesta;
+import co.com.ccb.apirest.comando.dto.PersonaDTO;
+import co.com.ccb.apirest.comando.manejador.persona.ManejadorCreacionPersona;
 
 @RestController
 @RequestMapping("/v1/persona")
 public class ComandoControladorPersona {
 
 	@Autowired
-	private CreacionServicioPersona creacionServicioPersona;
+	private ManejadorCreacionPersona manejadorCreacionPersona;
 
 	@PostMapping
-	public void crear(@RequestBody Persona persona) {
-		creacionServicioPersona.ejecutar(persona);
+	public ComandoRespuesta<Integer> crear(@RequestBody PersonaDTO persona) {
+		return manejadorCreacionPersona.ejecutar(persona);
 	}
 
 }
