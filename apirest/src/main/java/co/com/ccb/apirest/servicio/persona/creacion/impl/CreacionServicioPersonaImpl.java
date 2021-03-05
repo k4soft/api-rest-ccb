@@ -14,6 +14,8 @@ import co.com.ccb.apirest.servicio.persona.creacion.CreacionServicioPersona;
 @Service
 public class CreacionServicioPersonaImpl implements CreacionServicioPersona {
 	
+	private static final String NO_EXISTE_DOCUMENTO_DE_IDENTIDAD = "No existe documento de identidad";
+
 	@Autowired
 	private PersonaRepository personaRepository;
 	
@@ -31,7 +33,7 @@ public class CreacionServicioPersonaImpl implements CreacionServicioPersona {
 	private TipoDocumento buscarTipoDocumento(Persona persona) {
 		TipoDocumento tipoDocumento = tipoDocumentoRepository.findById(persona.getTipoDocumento().getIdTipoDocumento()).orElse(null);
 		if(tipoDocumento == null) {
-			throw new ExcepcionNoExisteRegistro("No existe documento de identidad");
+			throw new ExcepcionNoExisteRegistro(NO_EXISTE_DOCUMENTO_DE_IDENTIDAD);
 		}
 		return tipoDocumento;
 	}
