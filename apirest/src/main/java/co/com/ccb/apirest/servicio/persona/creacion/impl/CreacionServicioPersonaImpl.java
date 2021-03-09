@@ -3,7 +3,6 @@ package co.com.ccb.apirest.servicio.persona.creacion.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.com.ccb.apirest.dominio.ValidadorArgumento;
 import co.com.ccb.apirest.dominio.excepcion.ExcepcionNoExisteRegistro;
 import co.com.ccb.apirest.model.Persona;
 import co.com.ccb.apirest.model.TipoDocumento;

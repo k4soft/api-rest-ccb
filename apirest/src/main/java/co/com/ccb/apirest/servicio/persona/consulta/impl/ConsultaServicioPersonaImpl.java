@@ -18,4 +18,15 @@ public class ConsultaServicioPersonaImpl implements ConsultaServicioPersona {
 		return repository.findAll();
 	}
 
+	@Override
+	public Iterable<Persona> findByActivo(boolean activo) {
+		return repository.findByActivo(activo);
+	}
+	
+	@Override
+	public Iterable<Persona> findByNombre(String nombre) {
+		return repository.findByNombre(nombre);
+	}
+	
+
 }

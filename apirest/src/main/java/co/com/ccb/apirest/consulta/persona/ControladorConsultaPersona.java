@@ -2,6 +2,7 @@ package co.com.ccb.apirest.consulta.persona;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +20,18 @@ public class ControladorConsultaPersona {
 	Iterable<Persona> findAll(){
 		return consultaServicioPersona.findAll();
 	}
+	
+	
+	@GetMapping("/segun-activo/{activo}")
+	Iterable<Persona> findByActivo(@PathVariable boolean activo){
+		return consultaServicioPersona.findByActivo(activo);
+	}
+	
+	@GetMapping("/segun-nombre/{nombre}")
+	Iterable<Persona> findByNombre(@PathVariable String nombre){
+		return consultaServicioPersona.findByNombre(nombre);
+	}
+	
+
 
 }

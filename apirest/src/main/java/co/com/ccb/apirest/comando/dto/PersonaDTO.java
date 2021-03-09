@@ -13,4 +13,5 @@ public class PersonaDTO {
 	private String numeroDocumento;
 	private String nombre;
 	private String apellido;
+	private boolean activo;
 }

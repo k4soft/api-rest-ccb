@@ -30,6 +30,8 @@ public class Persona {
 	private String nombre;
 	@Column(name = "apellido")
 	private String apellido;
+	@Column(name = "activo")
+	private boolean activo;
 
 	public TipoDocumento getTipoDocumento() {
 		if(tipoDocumento == null) {
