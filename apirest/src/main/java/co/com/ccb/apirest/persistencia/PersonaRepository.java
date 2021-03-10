@@ -20,8 +20,6 @@ public interface PersonaRepository extends CrudRepository<Persona, Integer> {
 	Iterable<Persona> findByNombre(@Param("nombre") String nombre);
 	
 	
-
-	
 	
 
 }
