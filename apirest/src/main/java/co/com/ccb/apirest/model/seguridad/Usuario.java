@@ -23,13 +23,13 @@ import lombok.NoArgsConstructor;
 public class Usuario {
 	
 	@Id
-	private int idUsuario;
+	private Integer idUsuario;
 	@Column(unique = true, length = 20)
 	private String nombreUsuario;
 	@Column( length = 60)
 	private String password;
 	private boolean enabled;
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name= "users_authorities", joinColumns = @JoinColumn(name="id_usuario"), inverseJoinColumns = @JoinColumn(name="id_rol"), uniqueConstraints = {@UniqueConstraint(columnNames = {"id_usuario","id_rol"})})
 	private List<Rol> roles;
 	
