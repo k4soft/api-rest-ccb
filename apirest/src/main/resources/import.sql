@@ -1,6 +1,6 @@
 INSERT INTO tipodocumento (idTipoDocumento, nombreDocumento) values (1,'Cédula')
 INSERT INTO tipodocumento (idTipoDocumento, nombreDocumento) values (2,'Tarjeta identidad')
-INSERT INTO tipodocumento (idTipoDocumento, nombreDocumento) values (3,'Cédula extrangería')
+INSERT INTO tipodocumento (idTipoDocumento, nombreDocumento) values (3,'Cédula extranjería')
 
 
 INSERT INTO usuario (id_usuario,nombre_usuario, password, enabled ) values (1,'diego','$2a$10$LXvl9cEhPNTO9pX9ApvPG.sPlrm0LuvxHDLmmw8gMFE6BZiwGCwhO', true)
