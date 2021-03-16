@@ -2,7 +2,6 @@ package co.com.ccb.apirest.servicio.persona.consulta.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import co.com.ccb.apirest.model.Persona;
 import co.com.ccb.apirest.persistencia.PersonaRepository;
