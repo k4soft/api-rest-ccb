@@ -7,5 +7,6 @@ public class TipoDocumentoDTO {
 	
 	private Integer idTipoDocumento;
 	private String nombreDocumento;
+	private Integer port;
 
 }

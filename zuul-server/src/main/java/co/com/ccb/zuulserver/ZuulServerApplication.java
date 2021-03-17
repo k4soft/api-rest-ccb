@@ -1,18 +1,18 @@
-package co.com.ccb.microserviciopersona;
+package co.com.ccb.zuulserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 
 @EnableEurekaClient
-@EnableFeignClients
+@EnableZuulProxy
 @SpringBootApplication
-public class MicroservicioPersonaApplication {
+public class ZuulServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicroservicioPersonaApplication.class, args);
+		SpringApplication.run(ZuulServerApplication.class, args);
 	}
 
 }
