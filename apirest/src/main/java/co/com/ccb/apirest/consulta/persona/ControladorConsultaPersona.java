@@ -17,13 +17,14 @@ public class ControladorConsultaPersona {
 	@Autowired
 	private ConsultaServicioPersona consultaServicioPersona;
 	
+	@Secured({"ROLE_ADMIN","ROLE_CONSULTA"})
 	@GetMapping
 	Iterable<Persona> findAll(){
 		return consultaServicioPersona.findAll();
 	}
 	
 	
-    @Secured({"ROLE_ADMIN"})
+	@Secured({"ROLE_ADMIN"})
 	@GetMapping("/segun-activo/{activo}")
 	Iterable<Persona> findByActivo(@PathVariable boolean activo){
 		return consultaServicioPersona.findByActivo(activo);

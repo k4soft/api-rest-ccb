@@ -15,7 +15,6 @@ public class ApirestApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		 String password = "12345";
-		 
 		 for (int i = 0; i < 10; i++) {
 			 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();	 
 			 String passwordEncrypt = passwordEncoder.encode(password);

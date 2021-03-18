@@ -18,7 +18,7 @@ public class ContraladorConsultaTipoDocumento {
 	private ConsultaServicioTipoDocumento consultaServicioTipoDocumento;
 	
 	
-	 @Secured({"ROLE_CONSULTA"})
+	 @Secured({"ROLE_ADMIN","ROLE_CONSULTA"})
 	@GetMapping
 	public Iterable<TipoDocumento> findAll(){
 		return consultaServicioTipoDocumento.findAll();
