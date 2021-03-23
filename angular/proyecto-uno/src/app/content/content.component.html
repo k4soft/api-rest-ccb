@@ -1,0 +1,36 @@
+<button type="button" class="btn btn-primary my-3" (click)="enable()">Ocultar</button>
+<div class="card" *ngIf="habilitar">
+    <div class="card-header">
+        Listado de lenguajes de programación
+    </div>
+    <ul class="list-grop">
+        <li class="list-group-ite" *ngFor="let lenguaje of listaLenguajes">{{ lenguaje }}</li>
+    </ul>
+</div>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Listado de clientes</h1>
+        <p class="lead">Estos son los mejores clientes del mes</p>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clientes">
+                <th scope="row">{{cliente.id}}</th>
+                <td>{{cliente.nombre}}</td>
+                <td>{{cliente.apellido}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
