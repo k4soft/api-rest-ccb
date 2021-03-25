@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Persona } from 'src/app/model/persona';
+import Swal from 'sweetalert2';
+import { PersonaService } from '../../servicios/persona/persona.service';
 
 @Component({
   selector: 'app-listar-personas',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarPersonasComponent implements OnInit {
 
-  constructor() { }
+  personas: Persona[];
+
+  constructor(private personaService: PersonaService) { }
 
   ngOnInit(): void {
+      this.personaService.listarPersonas().subscribe(
+        resp => {
+           this.personas = resp;
+           if ( this.personas.length === 0){
+              Swal.fire('No existen registros en el sistema');
+           }
+        }
+      );
   }
 
 }

@@ -2,6 +2,7 @@ package co.com.ccb.apirest.consulta.persona;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.com.ccb.apirest.model.Persona;
 import co.com.ccb.apirest.servicio.persona.consulta.ConsultaServicioPersona;
+
 
 @RestController
 @RequestMapping("/v1/persona")

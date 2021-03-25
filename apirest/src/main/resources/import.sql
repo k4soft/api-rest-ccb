@@ -11,5 +11,5 @@ INSERT INTO roles (id_rol,nombre_rol) values (2,'ROLE_CONSULTA')
 INSERT INTO users_authorities (id_usuario, id_rol ) values (1,1)
 INSERT INTO users_authorities (id_usuario, id_rol ) values (2,2)
 
-INSERT INTO persona (idpersona,numerodocumento, iddocumentoidentidad,nombre,apellido,activo ) values (1,'12345',1,'Diego','Garcia', true)
-INSERT INTO persona (idpersona,numerodocumento, iddocumentoidentidad,nombre,apellido,activo ) values (2,'88888',2,'Fulanito','de tal', true)
+--INSERT INTO persona (idpersona,numerodocumento, iddocumentoidentidad,nombre,apellido,activo ) values (1,'12345',1,'Diego','Garcia', true)
+--INSERT INTO persona (idpersona,numerodocumento, iddocumentoidentidad,nombre,apellido,activo ) values (2,'88888',2,'Fulanito','de tal', true)

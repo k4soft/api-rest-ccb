@@ -1,1 +1,64 @@
-<p>registrar-personas works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                Registrar persona
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>
+                Favor diligenciar el formulario
+            </h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="registrar()" #personaForm="ngForm">
+            <div class="form-row">
+                <div class="form-group col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Tipo documento</label>
+                    <select class="form-control" name="tipoDocIdentidad" id="tipoDocIdentidad" [(ngModel)]="persona.tipoDocumento" required>
+                        <option>--seleccione--</option>
+                        <option *ngFor="let documento of tipoDocumentos">{{documento.nombreDocumento}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Nùmero de documento</label>
+                    <input class="form-control" type="text" id="numeroDocumento" name="numeroDocumento" [(ngModel)]="persona.numeroDocumento" placeholder="Digite un número de documento" minlength="3" #numeroDocumento="ngModel" required>
+                    <div class="alert alert-danger" *ngIf="numeroDocumento.invalid && (numeroDocumento.dirty || numeroDocumento.touched)">
+                        <div *ngIf="numeroDocumento?.errors.required">el número de documento es requerido</div>
+                        <div *ngIf="numeroDocumento?.errors.minlength">el número de documento debe tener al menos 3 caracteres</div>
+                    </div>
+                </div>
+            </div>
+            <div class=" form-row ">
+                <div class="form-group col-md-2 "></div>
+                <div class="form-group col-md-4 ">
+                    <label>Nombre</label>
+                    <input class="form-control " type="text" id="nombre" name="nombre" [(ngModel)]="persona.nombre" placeholder="Digite el nombre de la persona" minlength="3" #nombre="ngModel" required>
+                    <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                        <div *ngIf="nombre?.errors.required">el nombre es requerido</div>
+                        <div *ngIf="nombre?.errors.minlength">el nombre debe tener al menos 3 caracteres</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Apellido</label>
+                    <input class="form-control" type="text" id="apellido" name="apellido" [(ngModel)]="persona.apellido" placeholder="Digite el apellido de la persona" minlength="3" #apellido="ngModel" required>
+                    <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                        <div *ngIf="apellido?.errors.required">el apellido es requerido</div>
+                        <div *ngIf="apellido?.errors.minlength">el apellido debe tener al menos 3 caracteres</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row ">
+                <div class="form-group col-md-8 "></div>
+                <div class="form-group col-md-2 ">
+                    <button type="submit " class="btn btn-secondary float-right" [disabled]="!personaForm.form.valid">Registrar</button>
+                </div>
+                <div class="form-group col-md-2 "></div>
+            </div>
+        </form>
+    </div>

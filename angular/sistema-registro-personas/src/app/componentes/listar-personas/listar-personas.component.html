@@ -24,11 +24,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">Cédula</th>
-                        <td>123456</td>
-                        <td>Otto</td>
-                        <td>Prueba</td>
+                    <tr *ngFor="let persona of personas">
+                        <td scope="row">{{persona.tipoDocumento.nombreDocumento}}</td>
+                        <td>{{persona.numeroDocumento}}</td>
+                        <td>{{persona.nombre}}</td>
+                        <td>{{persona.apellido}}</td>
                         <td><button type="button" class="btn btn-primary">Editar</button> <button type="button" class="btn btn-danger">Eliminar</button></td>
                     </tr>
                 </tbody>
