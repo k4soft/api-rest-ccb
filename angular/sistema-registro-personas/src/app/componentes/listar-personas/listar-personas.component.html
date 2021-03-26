@@ -25,11 +25,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let persona of personas">
-                        <td scope="row">{{persona.tipoDocumento.nombreDocumento}}</td>
-                        <td>{{persona.numeroDocumento}}</td>
-                        <td>{{persona.nombre}}</td>
-                        <td>{{persona.apellido}}</td>
-                        <td><button type="button" class="btn btn-primary">Editar</button> <button type="button" class="btn btn-danger">Eliminar</button></td>
+                        <td scope="row">{{persona.tipoDocumento.nombreDocumento | uppercase}}</td>
+                        <td>{{persona.numeroDocumento }}</td>
+                        <td>{{persona.nombre | uppercase}}</td>
+                        <td>{{persona.apellido | uppercase}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" (click)="editarPersona(persona)">Editar</button> <button type=" button " class="btn btn-danger " (click)="eliminar(persona) ">Eliminar</button></td>
                     </tr>
                 </tbody>
             </table>

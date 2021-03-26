@@ -19,6 +19,7 @@ import { RegistrarPersonasComponent } from './componentes/registrar-personas/reg
     RegistrarPersonasComponent
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

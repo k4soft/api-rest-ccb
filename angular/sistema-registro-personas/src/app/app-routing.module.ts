@@ -5,6 +5,7 @@ import { ListarPersonasComponent } from './componentes/listar-personas/listar-pe
 import { RegistrarPersonasComponent } from './componentes/registrar-personas/registrar-personas.component';
 
 const routes: Routes = [
+  { path: 'editar/:idPersona', component: RegistrarPersonasComponent},
   { path: 'crear', component: RegistrarPersonasComponent},
   { path: 'listar', component: ListarPersonasComponent},
   { path: 'home', component: HomeComponent},

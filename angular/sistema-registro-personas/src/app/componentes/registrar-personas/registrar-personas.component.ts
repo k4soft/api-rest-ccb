@@ -3,6 +3,9 @@ import { TipoDocumento } from 'src/app/model/tipo-documento';
 import { TipoDocumentoService } from '../../servicios/tipo-documento/tipo-documento.service';
 import { Persona } from '../../model/persona';
 import Swal from 'sweetalert2';
+import { ComandoPersona } from '../../comando/comando-persona';
+import { PersonaService } from '../../servicios/persona/persona.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-personas',
@@ -13,9 +16,17 @@ export class RegistrarPersonasComponent implements OnInit {
 
   tipoDocumentos: TipoDocumento[];
   persona: Persona = new Persona();
-  constructor(private tipDocumentoService: TipoDocumentoService) { }
+  comandoPersona: ComandoPersona;
+  idPersona: number;
+  constructor(private tipDocumentoService: TipoDocumentoService,
+              private personaService: PersonaService,
+              private router: Router, private route: ActivatedRoute) {
+              this.idPersona = +this.route.snapshot.paramMap.get('idPersona');
+              alert(this.idPersona);
+            }
 
   ngOnInit(): void {
+
       this.tipDocumentoService.listarTipoDocumentos().subscribe(
         resp => {
           this.tipoDocumentos = resp;
@@ -25,29 +36,41 @@ export class RegistrarPersonasComponent implements OnInit {
 
   registrar(): void{
     Swal.fire({
-      title: 'Atención',
-      text: '¿Desea guardar la información de la persona?',
-      icon: 'warning',
+      title: '¿Desea guardar la información de la persona?',
+      showDenyButton: true,
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si!'
+      confirmButtonText: `Guardar`,
+      denyButtonText: `No guardar`,
     }).then((result) => {
-      this.establecerComando();
-
       if (result.isConfirmed) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'La información se ha guardado exitosamente',
-          showConfirmButton: false,
-          timer: 1500
-        })
+        this.establecerComando();
+        this.insertar();
+      } else if (result.isDenied) {
+        Swal.fire('Los cambios no fueron guardados', '', 'info');
       }
     });
   }
 
   establecerComando(): void{
+
+    this.comandoPersona = new ComandoPersona();
+    this.comandoPersona.idPersona = this.persona.idPersona;
+    this.comandoPersona.idTipoDocumento = this.persona.tipoDocumento.idTipoDocumento;
+    this.comandoPersona.numeroDocumento = this.persona.numeroDocumento;
+    this.comandoPersona.nombre = this.persona.nombre;
+    this.comandoPersona.apellido = this.persona.apellido;
+    this.comandoPersona.activo = this.persona.activo;
+  }
+
+  insertar(): void{
+     this.personaService.insertar(this.comandoPersona).subscribe(
+        _ =>{
+
+          Swal.fire('La infromación se guardó correctamente!', '', 'success');
+          this.router.navigate(['/listar']);
+        }
+     );
+
   }
 
 }
