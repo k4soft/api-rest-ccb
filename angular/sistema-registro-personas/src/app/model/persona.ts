@@ -2,7 +2,7 @@ import { TipoDocumento } from './tipo-documento';
 export class Persona {
     idPersona: number;
     numeroDocumento: string;
-    tipoDocumento: TipoDocumento;
+    tipoDocumento =  new  TipoDocumento();
     nombre: string;
     apellido: string;
     activo: boolean;

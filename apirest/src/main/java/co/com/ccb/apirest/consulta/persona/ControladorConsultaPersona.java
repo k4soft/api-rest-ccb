@@ -25,6 +25,12 @@ public class ControladorConsultaPersona {
 		return consultaServicioPersona.findAll();
 	}
 	
+	@Secured({"ROLE_ADMIN"})
+	@GetMapping("/{idPersona}")
+	Persona findById(@PathVariable Integer idPersona){
+		return consultaServicioPersona.findById(idPersona);
+	}
+	
 	
 	@Secured({"ROLE_ADMIN"})
 	@GetMapping("/segun-activo/{activo}")

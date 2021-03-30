@@ -9,6 +9,7 @@ import { HeaderComponent } from './componentes/header/header.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { ListarPersonasComponent } from './componentes/listar-personas/listar-personas.component';
 import { RegistrarPersonasComponent } from './componentes/registrar-personas/registrar-personas.component';
+import { LoginComponent } from './componentes/login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RegistrarPersonasComponent } from './componentes/registrar-personas/reg
     HeaderComponent,
     HomeComponent,
     ListarPersonasComponent,
-    RegistrarPersonasComponent
+    RegistrarPersonasComponent,
+    LoginComponent
   ],
   imports: [
     

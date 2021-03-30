@@ -36,6 +36,8 @@ public class ComandoControladorPersona {
 		return manejadorCreacionPersona.ejecutar(persona);
 	}
 	
+	
+	
 	@Secured({"ROLE_ADMIN"})
 	@PutMapping("/{idPersona}")
 	public ComandoRespuesta<Integer> actualizar(@PathVariable Integer idPersona,@RequestBody PersonaDTO persona) {

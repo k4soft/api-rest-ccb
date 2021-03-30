@@ -11,6 +11,8 @@ public interface ConsultaServicioPersona {
 	Iterable<Persona> findByActivo(boolean activo);
 	
 	Iterable<Persona> findByNombre(String nombre);
+
+	Persona findById(Integer idPersona);
 	
 	
 

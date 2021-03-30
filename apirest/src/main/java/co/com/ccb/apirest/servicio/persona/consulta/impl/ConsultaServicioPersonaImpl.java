@@ -29,6 +29,12 @@ public class ConsultaServicioPersonaImpl implements ConsultaServicioPersona {
 	public Iterable<Persona> findByNombre(String nombre) {
 		return repository.findByNombre(nombre);
 	}
+
+
+	@Override
+	public Persona findById(Integer idPersona) {
+		return repository.findById(idPersona).orElse(null);
+	}
 	
 
 }

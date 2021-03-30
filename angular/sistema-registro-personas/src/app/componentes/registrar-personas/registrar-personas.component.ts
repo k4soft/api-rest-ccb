@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { TipoDocumento } from 'src/app/model/tipo-documento';
 import { TipoDocumentoService } from '../../servicios/tipo-documento/tipo-documento.service';
 import { Persona } from '../../model/persona';
@@ -12,26 +12,41 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './registrar-personas.component.html',
   styleUrls: ['./registrar-personas.component.css']
 })
-export class RegistrarPersonasComponent implements OnInit {
+export class RegistrarPersonasComponent implements AfterContentInit {
 
   tipoDocumentos: TipoDocumento[];
   persona: Persona = new Persona();
   comandoPersona: ComandoPersona;
   idPersona: number;
+  titulo: string;
   constructor(private tipDocumentoService: TipoDocumentoService,
               private personaService: PersonaService,
               private router: Router, private route: ActivatedRoute) {
               this.idPersona = +this.route.snapshot.paramMap.get('idPersona');
-              alert(this.idPersona);
+              if(this.idPersona === 0) {
+                this.titulo = 'Registrar persona';
+              } else {
+                this.titulo = 'Editar persona';
+                this. consultarPersonaPorId();
+              }
             }
+  ngAfterContentInit(): void {
 
-  ngOnInit(): void {
+    this.tipDocumentoService.listarTipoDocumentos().subscribe(
+      resp => {
+        this.tipoDocumentos = resp;
+      }
+    );
+    
+  }
 
-      this.tipDocumentoService.listarTipoDocumentos().subscribe(
-        resp => {
-          this.tipoDocumentos = resp;
-        }
-      );
+  
+  consultarPersonaPorId(): void{
+    this.personaService.consultarPorId(this.idPersona).subscribe(
+      resp => {
+          this.persona = resp;
+      }
+    );
   }
 
   registrar(): void{
@@ -44,7 +59,12 @@ export class RegistrarPersonasComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.establecerComando();
-        this.insertar();
+        if(this.idPersona === 0){
+          this.insertar();
+        }else {
+           this.actualizar();
+        }
+       
       } else if (result.isDenied) {
         Swal.fire('Los cambios no fueron guardados', '', 'info');
       }
@@ -66,11 +86,21 @@ export class RegistrarPersonasComponent implements OnInit {
      this.personaService.insertar(this.comandoPersona).subscribe(
         _ =>{
 
-          Swal.fire('La infromación se guardó correctamente!', '', 'success');
+          Swal.fire('La infomación se guardó correctamente!', '', 'success');
           this.router.navigate(['/listar']);
         }
      );
 
+  }
+
+  actualizar(): void{
+    this.personaService.actualizar(this.comandoPersona).subscribe(
+      _ => {
+
+        Swal.fire('La infomación se actualizó correctamente!', '', 'success');
+        this.router.navigate(['/listar']);
+      }
+   );
   }
 
 }
