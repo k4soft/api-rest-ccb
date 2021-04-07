@@ -1,6 +1,5 @@
 package co.com.ccb.apirest.converter.persona;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,9 +5,13 @@ import static org.junit.Assert.fail;
 import java.util.function.Supplier;
 
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 
-
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class BasePrueba {
 
 	private static final String PERO_FUE_LANZADA = " Pero fue lanzada ";

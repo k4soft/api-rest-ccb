@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+    my-sql-docker:
+        image: mysql:8
+        ports:
+            - "3306:3306"
+        restart: always
+        networks: 
+            - docker-ccb-net
+        environment: 
+            MYSQL_DATABASE: personas
+            MYSQL_ROOT_PASSWORD: root
+            MY_ROOT_HOST: '%'
+    api-rest-docker-ccb:
+        image: imagen-api-ccb-docker
+        ports:
+            - "8082:8082"
+        restart: always
+        networks: 
+            - docker-ccb-net
+        depends_on: 
+            - my-sql-docker
+    front-end-personas:
+        image: sistema-registro-personas
+        ports:
+            - "9595:80"
+        networks: 
+            - docker-ccb-net
+        depends_on: 
+            - api-rest-docker-ccb
+networks: 
+    docker-ccb-net:
