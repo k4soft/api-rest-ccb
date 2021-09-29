@@ -14,9 +14,11 @@ public class PersonaConverter {
 	private static final String EL_NOMBRE_PERSONA_ES_OBLIGATORIO = "El nombre es obligatorio";
 	private static final String EL_APELLIDO_PERSONA_ES_OBLIGATORIO = "El apellido es oblugatorio";
 	private static final String EL_ID_NO_ES_VALIDO ="El id de la persona no es vàlido";
+	private static final String EL_TIPO_DE_DOCUMENTO_NO_ES_VALIDO = "El tipo de documento no es válido";
 
 	public Persona crear(PersonaDTO personaDTO) {
 		ValidadorArgumento.validarObligatorio(personaDTO.getIdTipoDocumento(), EL_TIPO_DE_DOCUMENTO_ES_OBLIGATORIO);
+		ValidadorArgumento.validarPositivo(personaDTO.getIdTipoDocumento(), EL_TIPO_DE_DOCUMENTO_NO_ES_VALIDO);
 		ValidadorArgumento.validarObligatorio(personaDTO.getNumeroDocumento(), EL_NUMERO_DE_DOCUMENTO_ES_OBLIGATORIO);
 		ValidadorArgumento.validarObligatorio(personaDTO.getNombre(), EL_NOMBRE_PERSONA_ES_OBLIGATORIO);
 		ValidadorArgumento.validarObligatorio(personaDTO.getApellido(), EL_APELLIDO_PERSONA_ES_OBLIGATORIO);
@@ -33,6 +35,7 @@ public class PersonaConverter {
 	public Persona editar(PersonaDTO personaDTO) {
 		ValidadorArgumento.validarPositivo(personaDTO.getIdPersona(), EL_ID_NO_ES_VALIDO);
 		ValidadorArgumento.validarObligatorio(personaDTO.getIdTipoDocumento(), EL_TIPO_DE_DOCUMENTO_ES_OBLIGATORIO);
+		ValidadorArgumento.validarPositivo(personaDTO.getIdTipoDocumento(), EL_TIPO_DE_DOCUMENTO_NO_ES_VALIDO);
 		ValidadorArgumento.validarObligatorio(personaDTO.getNumeroDocumento(), EL_NUMERO_DE_DOCUMENTO_ES_OBLIGATORIO);
 		ValidadorArgumento.validarObligatorio(personaDTO.getNombre(), EL_NOMBRE_PERSONA_ES_OBLIGATORIO);
 		ValidadorArgumento.validarObligatorio(personaDTO.getApellido(), EL_APELLIDO_PERSONA_ES_OBLIGATORIO);
